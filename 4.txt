@@ -1,0 +1,246 @@
+﻿#include <iostream>
+#include <string>
+#include "windows.h"
+#include <cmath>
+#include <array>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int n = 5, m = 5;
+	int matrix[n][m];
+	int min[2] = {0,0};
+	int max[2] = {0,0};
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			matrix[i][j] = rand() % 101;
+			cout << matrix[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+	int max_el = matrix[0][0], min_el = matrix[0][0];
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (max_el < matrix[i][j]) 
+			{
+				max_el = matrix[i][j];
+				max[0] = i+1;
+				max[1] = j+1;
+			}
+			if (min_el > matrix[i][j]) 
+			{
+				min_el = matrix[i][j];
+				min[0] = i+1;
+				min[1] = j+1;
+			}
+		}
+	}
+	auto f = [](int min[], int max[]) 
+	{
+		cout << "Мінімальний елемент: Arr[" << min[0] << "][" << min[1] << "]\nМаксимальний елемент: Arr[" << max[0] << "][" << max[1] << "]\n";
+
+	};
+	f(max, min);
+	}
+//---------------------------------------------------
+#include <iostream>
+#include <string>
+#include "windows.h"
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int n = 5;
+	int matrix1[n][n];
+	int matrix2[n][n];
+	int matrix_sum[n][n];
+
+	cout << "Матриця №1:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix1[i][j] = rand() % 101;
+			cout << matrix1[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "------------------------------------\nМатриця №2:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix2[i][j] = rand() % 101;
+			cout << matrix2[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "------------------------------------\nСума матриць\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix_sum[i][j] = matrix1[i][j] + matrix2[i][j];
+			cout << matrix_sum[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+}
+//---------------------------------------------------
+#include <iostream>
+#include <string>
+#include "windows.h"
+#include <cmath>
+#include <array>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int n = 5;
+	int matrix1[n][n];
+	int matrix2[n][n];
+	int matrix_mult[n][n];
+
+	cout << "Матриця №1:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix1[i][j] = rand() % 10;
+			matrix_mult[i][j] = 0;
+			cout << matrix1[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "------------------------------------\nДруга матриця:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix2[i][j] = rand() % 10;
+			cout << matrix2[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "------------------------------------\nДобуток матриць:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			for (int k = 0; k < n; k++)
+			{
+				matrix_mult[i][j] += matrix1[i][k] * matrix2[k][j];
+				
+			}
+			cout << matrix_mult[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+}
+//---------------------------------------------------
+#include <iostream>
+#include <string>
+#include "windows.h"
+#include <cmath>
+#include <array>
+
+using namespace std;
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	const int n = 5;
+	int matrix[n][n];
+
+	cout << "Матриця:\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			matrix[i][j] = rand() % 101;
+			cout << matrix[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+
+	cout << "------------------------------------\nРезультат:\n";
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (!(i == j)) 
+			{
+				matrix[i][j] = 0;
+			}
+			cout << matrix[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+}
+//---------------------------------------------------
+#include <iostream>
+#include <string>
+#include "windows.h"
+#include <cmath>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+	const int n = 3;
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int det = 0, multiplier = -1, det_minor = 0;
+	int matrix[n][n];
+	int minor[2][2];
+
+	cout << "Матриця:\n";
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			matrix[i][j] = rand() % 21 - 10;
+			cout << matrix[i][j] << "\t";
+		}
+		cout << "\n";
+	}
+	for (int k = 0; k < 3; k++)
+	{
+		for (int i = 1; i < 3; i++)
+		{
+			det_minor = 0;
+			for (int j = 0; j < 3; j++)
+			{
+				if (!(j == k))
+				{
+					minor[i - 1][det_minor] = matrix[i][j];
+					det_minor++;
+				}
+			}
+		}
+		multiplier *= -1;
+		det += multiplier * matrix[0][cross] * (minor[0][0] * minor[1][1] - minor[0][1] * minor[1][0]);
+	}
+	cout << "Детермінант: " << det << "\n";
+}
