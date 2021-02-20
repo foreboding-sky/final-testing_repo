@@ -1,0 +1,148 @@
+//1
+#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	char inpt_str[50];
+	char line = '_';
+	cout << "Enter your text: " << endl;
+	cin >> setw(50) >> inpt_str;
+
+	vector<char> input_string(inpt_str, inpt_str + sizeof(inpt_str) / sizeof(*inpt_str));
+	for (char& elem : input_string )
+	{
+		int isLowercaseVowel, isUppercaseVowel;
+
+		isLowercaseVowel = (elem == 'a' || elem == 'e' || elem == 'i' || elem == 'o' || elem == 'u');
+
+		isUppercaseVowel = (elem == 'A' || elem == 'E' || elem == 'I' || elem == 'O' || elem == 'U');
+
+		if (isLowercaseVowel || isUppercaseVowel)
+		{
+			elem = line;
+		}
+		if (!elem) break;
+		cout << elem;
+	}
+}
+
+//2
+//#include "pch.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <iomanip>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+	string input_string;
+	cout << "Enter your text: " << endl;
+	cin >> input_string;
+
+	reverse(input_string.begin(), input_string.end());
+	cout << input_string;
+}
+
+//3
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <locale>
+
+using namespace std; 
+
+int main()
+{
+	locale loc;
+	string input_string;
+	cout << "Enter text" << endl;
+	getline(cin, input_string);
+	for (int i = 0; i < input_string.length();  i++)
+	{
+		if (i == 0 && input_string[i] != ' ')
+		{
+			input_string[i] = toupper(input_string[i], loc);
+		}
+		if (input_string[i] == ' ');
+		{
+			input_string[i + 1] = toupper(input_string[i + 1], loc);
+		}
+
+	}
+	cout << "This is for you @_@ - \n" << input_string;
+}
+//4
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <locale>
+
+using namespace std; 
+
+int main()
+{
+	locale loc;
+	string input_string, longest_word, temp_word;
+
+	int lenght = 0, max_lenght = 0;
+	cout << "Enter text " << endl;
+	getline(cin, input_string);
+
+	for(int i = 0; i < input_string.length(); i++)
+	{
+		if(input_string[i] == ' ' || i == input_string.length()-1)
+        {
+			if (temp_word.length() > max_lenght)
+			{
+				max_lenght = temp_word.length();
+				longest_word = temp_word;
+			}
+			temp_word.clear();
+			continue;
+        }
+		temp_word += input_string[i];
+	}
+	cout << "This is your longest word - \n" << longest_word;
+}
+
+//5
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <locale>
+
+using namespace std; 
+
+int main()
+{
+	string input_string;
+
+	int word_num = 1;
+	cout << "Enter text" << endl;
+	getline(cin, input_string);
+
+	cout << "Number of words - " ;
+	if(input_string.empty())
+	{
+		cout << 0;
+	}
+	else
+	{
+		cout << count(input_string.begin(), input_string.end(), ' ') + 1;
+	}
+}
+
